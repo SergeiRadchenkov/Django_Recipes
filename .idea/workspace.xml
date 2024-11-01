@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1529faee-9dcd-4fb1-bb22-606f2c6ca46e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Django_Recipes.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resipe_website/recipe_app/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resipe_website/recipe_app/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resipe_website/recipe_app/templates/recipes/add_recipe.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resipe_website/recipe_app/templates/recipes/recipe_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resipe_website/recipe_app/templates/recipes/recipe_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resipe_website/recipe_app/templates/registration/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resipe_website/recipe_app/templates/registration/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resipe_website/recipe_app/templates/registration/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resipe_website/recipe_app/urls.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2o1ZjmBO3SqJ3CuP73EK6lpH73y" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Nitro V15\PycharmProjects\Django_Recipes\resipe_website\recipe_app\templates\registration" />
+      <recent name="C:\Users\Nitro V15\PycharmProjects\Django_Recipes\resipe_website\recipe_app\templates" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1529faee-9dcd-4fb1-bb22-606f2c6ca46e" name="Changes" comment="" />
+      <created>1730039179591</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1730039179591</updated>
+    </task>
+    <servers />
+  </component>
+</project>

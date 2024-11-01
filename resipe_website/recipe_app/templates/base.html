@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Recipe Site{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'recipe_list' %}">Recipe Site</a></h1>
+        {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }}! |
+                <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </p>
+        {% else %}
+            <p><a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a></p>
+        {% endif %}
+        <nav>
+            <a href="{% url 'recipe_list' %}">Home</a>
+            <a href="{% url 'add_recipe' %}">Add Recipe</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
