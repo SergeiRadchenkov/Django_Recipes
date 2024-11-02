@@ -1,4 +1,11 @@
-<!-- profile.html -->
+<!-- recipe_app/templates/registration/profile.html -->
+{% extends 'base.html' %}
+
+{% block title %}Профиль пользователя{% endblock %}
+
+{% block content %}
 <h1>Профиль пользователя</h1>
 <p>Добро пожаловать, {{ user.username }}!</p>
 <p><a href="{% url 'recipe_list' %}">На главную</a></p>
+<p><a href="{% url 'add_recipe' %}">Добавить новый рецепт</a></p>
+{% endblock %}

@@ -1,0 +1,8 @@
+msgid "This field is required."
+msgstr "Это поле обязательно для заполнения."
+
+msgid "Please enter a valid email address."
+msgstr "Пожалуйста, введите корректный адрес электронной почты."
+
+msgid "You have successfully registered!"
+msgstr "Вы успешно зарегистрировались!"

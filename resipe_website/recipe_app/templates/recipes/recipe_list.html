@@ -1,7 +1,8 @@
+<!-- recipe_app/templates/recipes/recipe_list.html -->
 {% extends 'base.html' %}
-{% block title %}Recipes{% endblock %}
+{% block title %}Сайт ваших рецептов{% endblock %}
 {% block content %}
-<h2>Recent Recipes</h2>
+<h2>Свежие рецепты</h2>
 <ul>
     {% for recipe in recipes %}
         <li><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a></li>

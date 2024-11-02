@@ -1,10 +1,46 @@
+<!-- recipe_app/templates/recipes/add_recipe.html -->
 {% extends 'base.html' %}
-{% block title %}Add Recipe{% endblock %}
+{% block title %}Добавить рецепт{% endblock %}
 {% block content %}
-<h2>Add a New Recipe</h2>
+<h2>Добавьте новый рецепт</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save Recipe</button>
+
+    <div class="form-section">
+        <h3>Напишите название рецепта</h3>
+        {{ form.title }}
+    </div>
+
+    <div class="form-section">
+        <h3>Выборите категорию</h3>
+        {{ form.categories }}
+    </div>
+
+    <div class="form-section">
+        <h3>Описание рецепта</h3>
+        {{ form.description }}
+    </div>
+
+    <div class="form-section">
+        <h3>Ингредиенты</h3>
+        {{ form.ingredients }}
+    </div>
+
+    <div class="form-section">
+        <h3>Шаги приготовления</h3>
+        {{ form.preparation_steps }}
+    </div>
+
+    <div class="form-section">
+        <h3>Время приготовления в минутах</h3>
+        {{ form.preparation_time }}
+    </div>
+
+    <div class="form-section">
+        <h3>Добавьте фото</h3>
+        {{ form.image }}
+    </div>
+
+    <button type="submit">Сохранить рецепт</button>
 </form>
 {% endblock %}

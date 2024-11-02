@@ -3,10 +3,11 @@ from .models import Recipe, Category
 from .forms import RecipeForm, UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
+from django.contrib import messages
 
 
 def recipe_list(request):
-    recipes = Recipe.objects.order_by('-id')[:5]
+    recipes = Recipe.objects.order_by('-id').distinct()[:5]
     return render(request, 'recipes/recipe_list.html', {'recipes': recipes})
 
 def recipe_detail(request, recipe_id):
@@ -22,10 +23,12 @@ def add_recipe(request):
             recipe = form.save(commit=False)
             recipe.author = request.user
             recipe.save()
-            form.save_m2m()  # Save many-to-many relationships
+            category = form.cleaned_data['categories']
+            recipe.categories.add(category)
             return redirect('recipe_detail', recipe_id=recipe.id)
     else:
         form = RecipeForm()
+
     return render(request, 'recipes/add_recipe.html', {'form': form})
 
 
@@ -35,6 +38,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            messages.success(request, 'Вы успешно зарегистрировались!')
             return redirect('recipe_list')
     else:
         form = UserRegisterForm()
