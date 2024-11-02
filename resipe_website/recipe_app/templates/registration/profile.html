@@ -1,11 +1,25 @@
 <!-- recipe_app/templates/registration/profile.html -->
 {% extends 'base.html' %}
-
-{% block title %}Профиль пользователя{% endblock %}
-
+{% block title %}Ваш профиль{% endblock %}
 {% block content %}
-<h1>Профиль пользователя</h1>
-<p>Добро пожаловать, {{ user.username }}!</p>
-<p><a href="{% url 'recipe_list' %}">На главную</a></p>
-<p><a href="{% url 'add_recipe' %}">Добавить новый рецепт</a></p>
+<h2>Ваш профиль</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-section">
+        <h3>Имя пользователя</h3>
+        <p>{{ user.username }}</p> <!-- Выводим имя пользователя -->
+    </div>
+
+    <div class="form-section">
+        <h3>Измените ваше фото</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="image" accept="image/*"> <!-- Поле для загрузки фото -->
+            <button type="submit">Сохранить</button>
+        </form>
+    </div>
+
+    <!-- Добавьте другие поля, если необходимо -->
+</form>
 {% endblock %}

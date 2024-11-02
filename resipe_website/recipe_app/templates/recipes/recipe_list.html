@@ -1,11 +1,26 @@
 <!-- recipe_app/templates/recipes/recipe_list.html -->
 {% extends 'base.html' %}
+
 {% block title %}Сайт ваших рецептов{% endblock %}
+
 {% block content %}
-<h2>Свежие рецепты</h2>
-<ul>
-    {% for recipe in recipes %}
-        <li><a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a></li>
-    {% endfor %}
-</ul>
+<div class="recipes-section">
+    <h2 class="section-title">Свежие рецепты</h2>
+    <div class="recipe-cards">
+        {% for recipe in recipes %}
+            <div class="recipe-card">
+                <div class="recipe-author">
+                    {{ recipe.author.username }}
+                </div>
+                <h3>{{ recipe.title }}</h3>
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="recipe-image">
+                <p>{{ recipe.description }}</p>
+                <p>Время приготовления: {{ recipe.preparation_time }} мин.</p>
+                <a href="{% url 'recipe_detail' recipe.id %}" class="recipe-link">Подробнее</a>
+            </div>
+        {% empty %}
+            <p>Пока нет доступных рецептов.</p>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

@@ -6,8 +6,9 @@ from django.contrib.auth import login
 from django.contrib import messages
 
 
+
 def recipe_list(request):
-    recipes = Recipe.objects.order_by('-id').distinct()[:5]
+    recipes = Recipe.objects.order_by('-id')[:5]
     return render(request, 'recipes/recipe_list.html', {'recipes': recipes})
 
 def recipe_detail(request, recipe_id):
