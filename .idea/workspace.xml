@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1529faee-9dcd-4fb1-bb22-606f2c6ca46e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resipe_website/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/resipe_website/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resipe_website/recipe_app/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/resipe_website/recipe_app/static/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resipe_website/recipe_app/templates/recipes/recipe_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/resipe_website/recipe_app/templates/recipes/recipe_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resipe_website/recipe_app/templates/registration/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/resipe_website/recipe_app/templates/registration/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resipe_website/recipe_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/resipe_website/recipe_app/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resipe_website/resipe_website/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/resipe_website/resipe_website/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resipe_website/resipe_website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/resipe_website/resipe_website/urls.py" afterDir="false" />
-    </list>
+    <list default="true" id="1529faee-9dcd-4fb1-bb22-606f2c6ca46e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
