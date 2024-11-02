@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Recipe, Category
+from .models import Recipe
 from .forms import RecipeForm, UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
@@ -46,7 +46,9 @@ def register(request):
     return render(request, 'registration/register.html', {'form': form})
 
 
-
+@login_required
 def profile(request):
-    return render(request, 'registration/profile.html')
+    user = request.user
+    recipes = Recipe.objects.filter(author=user)  # Получаем рецепты текущего пользователя
+    return render(request, 'registration/profile.html', {'user': user, 'recipes': recipes})
 

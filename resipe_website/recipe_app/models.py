@@ -27,3 +27,4 @@ class RecipeCategory(models.Model):
 
     class Meta:
         unique_together = ('recipe', 'category')
+
