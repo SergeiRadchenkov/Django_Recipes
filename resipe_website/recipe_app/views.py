@@ -49,6 +49,6 @@ def register(request):
 @login_required
 def profile(request):
     user = request.user
-    recipes = Recipe.objects.filter(author=user)  # Получаем рецепты текущего пользователя
+    recipes = Recipe.objects.filter(author=user).order_by('-id')  # Получаем рецепты текущего пользователя
     return render(request, 'registration/profile.html', {'user': user, 'recipes': recipes})
 
