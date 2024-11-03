@@ -260,3 +260,32 @@ input, select, textarea {
     margin: 0 auto;
 }
 
+/* Стили для кнопки "Удалить" */
+.delete-button {
+    background-color: #dc3545; /* Красный цвет */
+    color: white; /* Цвет текста */
+    padding: 10px 20px; /* Внутренние отступы */
+    border: none; /* Убираем границы */
+    border-radius: 5px; /* Закругленные углы */
+    font-size: 18px; /* Размер шрифта */
+    font-family: inherit; /* Используем тот же шрифт, что и у родительского элемента */
+    font-weight: bold;
+    cursor: pointer; /* Указатель курсора на кнопке */
+    transition: background-color 0.3s; /* Плавный переход при наведении */
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Темно-красный цвет при наведении */
+}
+
+/* Стили для кнопки "Отмена" */
+.cancel-button {
+    color: #4CAF50;
+    font-weight: bold;
+    text-decoration: none;
+    color: white; /* Цвет текста */
+}
+
+.cancel-button:hover {
+    background-color: #5a6268; /* Темно-серый цвет при наведении */
+}

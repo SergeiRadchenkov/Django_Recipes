@@ -1,0 +1,12 @@
+<!-- recipe_app/templates/recipes/confirm_delete.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Удаление рецепта</h2>
+<p>Вы уверены, что хотите удалить рецепт "{{ recipe.title }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="delete-button">Удалить</button>
+    <a href="{% url 'profile' %}" class="submit-button cancel-button">Отмена</a>
+</form>
+{% endblock %}

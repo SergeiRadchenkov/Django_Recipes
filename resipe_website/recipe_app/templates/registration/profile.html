@@ -20,7 +20,15 @@
                     </a>
                     <p>{{ recipe.description }}</p>
                     <p>Время приготовления: {{ recipe.preparation_time }} мин.</p>
-                    <a href="{% url 'recipe_detail' recipe.id %}" class="recipe-link">Подробнее</a>
+                    <a href="{% url 'recipe_detail' recipe.id %}" class="recipe-link submit-button">Подробнее</a>
+                    <!-- Ссылка для редактирования рецепта -->
+                    <a href="{% url 'edit_recipe' recipe.id %}" class="recipe-link submit-button">Редактировать</a>
+
+                    <!-- Форма для удаления рецепта -->
+                    <form action="{% url 'delete_recipe' recipe.id %}" method="get" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-button">Удалить</button>
+                    </form>
                 </div>
             {% endfor %}
         {% else %}

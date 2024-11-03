@@ -8,7 +8,7 @@ from django.contrib import messages
 
 
 def recipe_list(request):
-    recipes = Recipe.objects.order_by('-id')[:5]
+    recipes = Recipe.objects.order_by('-id')[:10]
     return render(request, 'recipes/recipe_list.html', {'recipes': recipes})
 
 def recipe_detail(request, recipe_id):
@@ -33,6 +33,30 @@ def add_recipe(request):
     return render(request, 'recipes/add_recipe.html', {'form': form})
 
 
+@login_required
+def edit_recipe(request, pk):
+    recipe = get_object_or_404(Recipe, pk=pk, author=request.user)
+    if request.method == 'POST':
+        form = RecipeForm(request.POST, request.FILES, instance=recipe)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = RecipeForm(instance=recipe)
+    return render(request, 'recipes/add_recipe.html', {'form': form})
+
+
+@login_required
+def delete_recipe(request, pk):
+    recipe = get_object_or_404(Recipe, pk=pk, author=request.user)
+    if request.method == 'POST':
+        recipe.delete()
+        return redirect('profile')
+
+    print(f"Отображение страницы подтверждения удаления для рецепта: {recipe.title}")  # Отладочная строка
+    return render(request, 'recipes/confirm_delete.html', {'recipe': recipe})
+
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -51,4 +75,3 @@ def profile(request):
     user = request.user
     recipes = Recipe.objects.filter(author=user).order_by('-id')  # Получаем рецепты текущего пользователя
     return render(request, 'registration/profile.html', {'user': user, 'recipes': recipes})
-
