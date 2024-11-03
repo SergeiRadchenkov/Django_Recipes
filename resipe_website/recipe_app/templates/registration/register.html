@@ -1,13 +1,29 @@
 <!-- recipe_app/templates/registration/register.html -->
 {% extends 'base.html' %}
+{% load form_tags %}
 
 {% block title %}Регистрация{% endblock %}
 
 {% block content %}
-<h2>Регистрация</h2>
-<form method="post">
+<h2 class="section-title">Регистрация</h2>
+<form method="post" class="registration-form">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Зарегистрироваться</button>
+    <div class="form-section">
+        {{ form.username.label_tag }}
+        {{ form.username|add_class:"form-input" }}  <!-- Поле ввода имени пользователя -->
+    </div>
+    <div class="form-section">
+        {{ form.email.label_tag }}
+        {{ form.email|add_class:"form-input" }}  <!-- Поле ввода электронной почты -->
+    </div>
+    <div class="form-section">
+        {{ form.password1.label_tag }}
+        {{ form.password1|add_class:"form-input" }}  <!-- Поле ввода пароля -->
+    </div>
+    <div class="form-section">
+        {{ form.password2.label_tag }}
+        {{ form.password2|add_class:"form-input" }}  <!-- Поле ввода подтверждения пароля -->
+    </div>
+    <button type="submit" class="submit-button">Зарегистрироваться</button>
 </form>
 {% endblock %}

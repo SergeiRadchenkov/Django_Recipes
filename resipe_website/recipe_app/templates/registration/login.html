@@ -1,13 +1,22 @@
 <!-- recipe_app/templates/registration/login.html -->
+<!-- recipe_app/templates/registration/login.html -->
 {% extends 'base.html' %}
+{% load form_tags %}  <!-- Загрузка пользовательских тегов -->
 
 {% block title %}Вход{% endblock %}
 
 {% block content %}
-<h2>Вход</h2>
-<form method="post" action="{% url 'login' %}">
+<h2 class="section-title">Вход</h2>
+<form method="post" action="{% url 'login' %}" class="login-form">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Войти</button>
+    <div class="form-section">
+        {{ form.username.label_tag }}
+        {{ form.username|add_class:"form-input" }}  <!-- Использование пользовательского фильтра -->
+    </div>
+    <div class="form-section">
+        {{ form.password.label_tag }}
+        {{ form.password|add_class:"form-input" }}  <!-- Использование пользовательского фильтра -->
+    </div>
+    <button type="submit" class="submit-button">Войти</button>
 </form>
 {% endblock %}

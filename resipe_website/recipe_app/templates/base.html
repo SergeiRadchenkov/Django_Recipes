@@ -12,6 +12,20 @@
         .site-title {
             background-image: url("{% static 'images/banner_image.png' %}");
         }
+
+        /* Картинка для страницы "Добавить рецепт" */
+        .add-recipe-background {
+            background-image: url("{% static 'images/back_image.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            padding: 20px;
+            /*
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;*/
+        }
+
     </style>
 </head>
 <body>
@@ -48,8 +62,8 @@
     </div>
     {% endif %}
 
-    <!-- Основной контент -->
-    <div class="content-container">
+    <!-- Основной контент с условием для фона -->
+    <div class="content-container {% if request.path == '/recipe/add/' %}add-recipe-background{% endif %}"> <!-- Проверяем путь -->
         <div class="content">
             <main>
                 {% block content %}{% endblock %}
