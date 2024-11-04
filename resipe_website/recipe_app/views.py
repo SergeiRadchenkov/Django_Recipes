@@ -63,7 +63,17 @@ def edit_recipe(request, pk):
     if request.method == 'POST':
         form = RecipeForm(request.POST, request.FILES, instance=recipe)
         if form.is_valid():
-            form.save()
+
+            updated_recipe = form.save(commit=False)  # Сохраняем, но не коммитим сразу
+            updated_recipe.save()  # Сохраняем рецепт в БД
+
+            selected_category_id = request.POST.get('categories')  # Получаем выбранную категорию
+            if selected_category_id:
+                # Получаем новую категорию по ID
+                new_category = get_object_or_404(Category, id=selected_category_id)
+                # Очищаем старые категории и добавляем новую
+                recipe.categories.clear()  # Удаляем все текущие категории
+                recipe.categories.add(new_category)  # Добавляем новую категорию
             return redirect('profile')
     else:
         form = RecipeForm(instance=recipe)
