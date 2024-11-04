@@ -1,15 +1,27 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Recipe
+from .models import Recipe, Category
 from .forms import RecipeForm, UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.contrib import messages
-
+import random
 
 
 def recipe_list(request):
-    recipes = Recipe.objects.order_by('-id')[:10]
-    return render(request, 'recipes/recipe_list.html', {'recipes': recipes})
+    category_id = request.GET.get('category')
+    random_count = request.GET.get('random')
+
+    if random_count:  # Если выбран параметр случайных рецептов
+        recipes = Recipe.objects.all()
+        # Получаем 5 случайных рецептов
+        recipes = random.sample(list(recipes), min(5, len(recipes)))
+    elif category_id:  # Если выбрана категория
+        recipes = Recipe.objects.filter(categories__id=category_id).order_by('-id')
+    else:  # Если ничего не выбрано, показываем все рецепты
+        recipes = Recipe.objects.all().order_by('-id')
+
+    categories = Category.objects.all()  # Получаем все категории
+    return render(request, 'recipes/recipe_list.html', {'recipes': recipes, 'categories': categories})
 
 def recipe_detail(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)

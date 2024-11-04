@@ -289,3 +289,10 @@ input, select, textarea {
 .cancel-button:hover {
     background-color: #5a6268; /* Темно-серый цвет при наведении */
 }
+
+.category-select {
+    margin-top: 10px; /* Отступ сверху */
+    font-size: 12px; /* Размер шрифта */
+    padding: 5px; /* Отступ внутри */
+    width: 150px; /* Ширина списка */
+}

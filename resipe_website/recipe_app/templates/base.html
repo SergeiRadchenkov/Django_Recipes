@@ -27,6 +27,22 @@
         }
 
     </style>
+    <script>
+        // Функция для отправки формы при изменении выпадающего списка
+        function filterRecipes() {
+            const categorySelect = document.getElementById('category');
+            const selectedValue = categorySelect.value;
+
+            // Проверка на выбор "10 свежих рецептов" или "5 случайных рецептов"
+            if (selectedValue === 'fresh_recipes') {
+                window.location.href = "{% url 'recipe_list' %}";
+            } else if (selectedValue === 'random_recipes') {
+                window.location.href = "{% url 'recipe_list' %}?random=5"; // Пример параметра для случайных рецептов
+            } else {
+                document.getElementById('category-form').submit();
+            }
+        }
+    </script>
 </head>
 <body>
     <!-- Первая полоса -->
@@ -66,6 +82,19 @@
     <div class="content-container {% if request.path == '/recipe/add/' %}add-recipe-background{% endif %}"> <!-- Проверяем путь -->
         <div class="content">
             <main>
+                {% if request.path == '/' %}
+                <!-- Добавление выпадающего списка категорий -->
+                <form action="{% url 'recipe_list' %}" method="GET" id="category-form">
+                        <select name="category" id="category" class="category-select" onchange="filterRecipes()">
+                            <option value="">Выберите категорию</option>
+                            <option value="fresh_recipes">10 свежих рецептов</option>
+                            <option value="random_recipes">5 случайных рецептов</option> <!-- Новая опция -->
+                            {% for category in categories %}
+                                <option value="{{ category.id }}" {% if category.id == request.GET.category %}selected{% endif %}>{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                {% endif %}
                 {% block content %}{% endblock %}
             </main>
         </div>
