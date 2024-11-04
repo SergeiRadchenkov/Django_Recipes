@@ -21,6 +21,7 @@ class Recipe(models.Model):
     def __str__(self):
         return self.title
 
+
 class RecipeCategory(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -28,3 +29,15 @@ class RecipeCategory(models.Model):
     class Meta:
         unique_together = ('recipe', 'category')
 
+
+class Comment(models.Model):
+    recipe = models.ForeignKey(Recipe, related_name='comments', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"Комментарий от {self.user} к рецепту {self.recipe}"

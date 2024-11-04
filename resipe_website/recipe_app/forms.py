@@ -1,5 +1,5 @@
 from django import forms
-from .models import Recipe, Category
+from .models import Recipe, Category, Comment
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -25,3 +25,10 @@ class UserRegisterForm(UserCreationForm):
             'password1': 'Пароль',
             'password2': 'Подтверждение пароля',
         }
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['text']
+        labels = {'text': 'Ваш комментарий'}

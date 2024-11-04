@@ -296,3 +296,91 @@ input, select, textarea {
     padding: 5px; /* Отступ внутри */
     width: 150px; /* Ширина списка */
 }
+
+/* Основной контейнер для блока комментариев */
+.comments-container {
+    margin: 20px; /* Отступы сверху и снизу, центрирование */
+    padding: 15px; /* Внутренний отступ */
+    background-color: #f9f9f9; /* Цвет фона блока */
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Уменьшенная тень для выделения */
+}
+
+/* Заголовок блока комментариев */
+.comments-title {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 20px;
+    color: #4CAF50; /* Цвет текста */
+}
+
+/* Стили для отдельных комментариев */
+.comment {
+    background-color: white; /* Цвет фона комментария */
+    border: 1px solid #e0e0e0; /* Граница */
+    border-radius: 6px; /* Закругленные углы */
+    padding: 10px; /* Уменьшенный внутренний отступ */
+    margin-bottom: 10px; /* Отступ снизу между комментариями */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Уменьшенная тень для выделения */
+}
+
+/* Стили для имени автора комментария */
+.comment-author {
+    font-weight: bold; /* Жирный шрифт для автора комментария */
+    color: #4CAF50; /* Цвет текста автора */
+}
+
+/* Стили для текста комментария */
+.comment-text {
+    font-size: 14px; /* Уменьшен размер шрифта текста комментария */
+    color: #555; /* Цвет текста */
+}
+
+.comment-date {
+    margin-top: 5px; /* Отступ сверху для даты */
+    font-size: 12px; /* Размер шрифта для даты */
+    color: #888; /* Цвет текста для даты */
+}
+
+.no-comments {
+    color: #888; /* Цвет текста для сообщения о том, что комментариев нет */
+    text-align: center; /* Центрируем текст */
+}
+
+/* Стили для формы добавления комментария */
+.comment-form {
+    margin-top: 15px; /* Уменьшен отступ сверху */
+    display: flex; /* Используем flexbox для расположения элементов */
+    flex-direction: column; /* Упорядочиваем элементы по вертикали */
+}
+
+/* Стили для полей формы (если есть) */
+.comment-form p {
+    text-align: left;
+    font-size: 17px;
+    color: #4CAF50; /* Цвет текста */
+    font-weight: bold;
+}
+
+/* Заголовок формы добавления комментария */
+.comment-form-title {
+    font-size: 17px; /* Уменьшен размер шрифта заголовка формы */
+    color: #4CAF50; /* Цвет текста */
+}
+
+/* Стили для кнопки отправки комментария */
+.submit-comment-button {
+    background-color: #4CAF50; /* Цвет фона кнопки */
+    color: white; /* Цвет текста */
+    padding: 8px 15px; /* Уменьшенные внутренние отступы */
+    border: none; /* Убираем границы */
+    border-radius: 4px; /* Закругленные углы */
+    font-size: 14px; /* Уменьшен размер шрифта */
+    cursor: pointer; /* Указатель курсора на кнопке */
+    transition: background-color 0.3s; /* Плавный переход при наведении */
+    width: 30%;
+}
+
+.submit-comment-button:hover {
+    background-color: #45a049; /* Цвет кнопки при наведении */
+}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Recipe, Category
-from .forms import RecipeForm, UserRegisterForm
+from .models import Recipe, Category, Comment
+from .forms import RecipeForm, UserRegisterForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.contrib import messages
@@ -18,14 +18,26 @@ def recipe_list(request):
     elif category_id:  # Если выбрана категория
         recipes = Recipe.objects.filter(categories__id=category_id).order_by('-id')
     else:  # Если ничего не выбрано, показываем все рецепты
-        recipes = Recipe.objects.all().order_by('-id')
+        recipes = Recipe.objects.all().order_by('-id')[:10]
 
     categories = Category.objects.all()  # Получаем все категории
     return render(request, 'recipes/recipe_list.html', {'recipes': recipes, 'categories': categories})
 
 def recipe_detail(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)
-    return render(request, 'recipes/recipe_detail.html', {'recipe': recipe})
+    comments = recipe.comments.order_by('-created_at')
+    form = CommentForm()
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.recipe = recipe
+            comment.author = request.user
+            comment.save()
+            return redirect('recipe_detail', recipe_id=recipe.id)
+
+    return render(request, 'recipes/recipe_detail.html', {'recipe': recipe, 'comments': comments, 'form': form})
 
 
 @login_required
