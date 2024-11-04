@@ -131,7 +131,7 @@ nav a:hover {
 .recipe-card {
     position: relative;
     width: 100%; /* Измените на 100% для вертикального отображения */
-    max-width: 800px; /* Ограничьте максимальную ширину */
+    max-width: 700px; /* Ограничьте максимальную ширину */
     padding: 15px;
     background-color: #fff;
     border: 1px solid #e0e0e0;
