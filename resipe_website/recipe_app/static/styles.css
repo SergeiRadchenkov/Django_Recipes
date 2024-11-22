@@ -400,3 +400,13 @@ input, select, textarea {
 .submit-comment-button:hover {
     background-color: #45a049; /* Цвет кнопки при наведении */
 }
+
+.error-message {
+    color: #d9534f;  /* Красный цвет для текста ошибки */
+    font-size: 0.9em;  /* Немного меньший размер текста */
+    margin-top: 5px;  /* Отступ сверху, чтобы отделить от поля ввода */
+    padding: 2px 5px;  /* Отступы вокруг текста ошибки */
+    background-color: #f8d7da;  /* Светло-красный фон */
+    border: 1px solid #f5c2c7;  /* Тонкая граница */
+    border-radius: 4px;  /* Закругленные углы */
+}

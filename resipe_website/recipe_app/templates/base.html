@@ -1,21 +1,21 @@
 <!-- recipe_app/templates/base.html -->
 <!DOCTYPE html>
 <html lang="ru">
-{% load static %}
+{% load static %} <!-- Загрузка статических файлов (CSS, изображения) -->
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> <!-- Устанавливает кодировку страницы -->
 
-    <title>{% block title %}Сайт ваших любимых рецептов{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>{% block title %}Сайт ваших любимых рецептов{% endblock %}</title> <!-- Заголовок страницы, по умолчанию 'Сайт ваших любимых рецептов' -->
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}"> <!-- Подключение внешнего CSS файла -->
     <style>
         /*Картинка третья полоса */
         .site-title {
-            background-image: url("{% static 'images/banner_image.png' %}");
+            background-image: url("{% static 'images/banner_image.png' %}"); <!-- Фоновое изображение для первой полосы -->
         }
 
         /* Картинка для страницы "Добавить рецепт" */
         .add-recipe-background {
-            background-image: url("{% static 'images/back_image.jpg' %}");
+            background-image: url("{% static 'images/back_image.jpg' %}"); <!-- Фоновое изображение на странице добавления рецепта -->
             background-size: cover;
             background-position: center;
             min-height: 100vh;
@@ -48,14 +48,14 @@
     <!-- Первая полоса -->
     <div class="top-bar">
         <div class="user-info">
-            {% if user.is_authenticated %}
-                <p>Здравствуйте, {{ user.username }}!</p>
-                <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit">Выйти</button>
+            {% if user.is_authenticated %} <!-- Если пользователь авторизован -->
+                <p>Здравствуйте, {{ user.username }}!</p> <!-- Отображение имени пользователя -->
+                <form action="{% url 'logout' %}" method="post"> <!-- Форма для выхода -->
+                    {% csrf_token %} <!-- CSRF защита для формы -->
+                    <button type="submit">Выйти</button> <!-- Кнопка выхода -->
                 </form>
-            {% else %}
-                <p><a href="{% url 'login' %}">Войти</a> | <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+            {% else %} <!-- Если пользователь не авторизован -->
+                <p><a href="{% url 'login' %}">Войти</a> | <a href="{% url 'register' %}">Зарегистрироваться</a></p> <!-- Ссылки для входа и регистрации -->
             {% endif %}
         </div>
     </div>
@@ -63,18 +63,18 @@
     <!-- Вторая полоса -->
     <header>
         <nav>
-            <a href="{% url 'recipe_list' %}">Главная</a>
-            <a href="{% url 'add_recipe' %}">Добавить рецепт</a>
-            {% if user.is_authenticated %}
-                <a href="{% url 'profile' %}">Ваш профиль</a>
+            <a href="{% url 'recipe_list' %}">Главная</a> <!-- Ссылка на главную страницу с рецептами -->
+            <a href="{% url 'add_recipe' %}">Добавить рецепт</a> <!-- Ссылка на страницу добавления рецепта -->
+            {% if user.is_authenticated %} <!-- Если пользователь авторизован -->
+                <a href="{% url 'profile' %}">Ваш профиль</a> <!-- Ссылка на профиль пользователя -->
             {% endif %}
         </nav>
     </header>
 
     <!-- Третья полоса -->
-    {% if request.path == '/' %}
+    {% if request.path == '/' %} <!-- Проверка, находитесь ли вы на главной странице -->
     <div class="site-title">
-        <h1>Сайт ваших любимых рецептов</h1>
+        <h1>Сайт ваших любимых рецептов</h1> <!-- Заголовок для главной страницы -->
     </div>
     {% endif %}
 
@@ -82,20 +82,20 @@
     <div class="content-container {% if request.path == '/recipe/add/' %}add-recipe-background{% endif %}"> <!-- Проверяем путь -->
         <div class="content">
             <main>
-                {% if request.path == '/' %}
+                {% if request.path == '/' %} <!-- Если находимся на главной странице -->
                 <!-- Добавление выпадающего списка категорий -->
                 <form action="{% url 'recipe_list' %}" method="GET" id="category-form">
-                        <select name="category" id="category" class="category-select" onchange="filterRecipes()">
-                            <option value="">Выберите категорию</option>
-                            <option value="fresh_recipes">10 свежих рецептов</option>
-                            <option value="random_recipes">5 случайных рецептов</option> <!-- Новая опция -->
-                            {% for category in categories %}
-                                <option value="{{ category.id }}" {% if category.id == request.GET.category %}selected{% endif %}>{{ category.name }}</option>
+                        <select name="category" id="category" class="category-select" onchange="filterRecipes()"> <!-- Выпадающий список категорий с функцией фильтрации -->
+                            <option value="">Выберите категорию</option> <!-- Пустой пункт выбора -->
+                            <option value="fresh_recipes">10 свежих рецептов</option> <!-- Опция для отображения 10 свежих рецептов -->
+                            <option value="random_recipes">5 случайных рецептов</option> <!-- Опция для отображения 5 случайных рецептов -->
+                            {% for category in categories %} <!-- Перебор категорий рецептов -->
+                                <option value="{{ category.id }}" {% if category.id == request.GET.category %}selected{% endif %}>{{ category.name }}</option> <!-- Динамическое добавление категорий -->
                             {% endfor %}
                         </select>
                     </form>
                 {% endif %}
-                {% block content %}{% endblock %}
+                {% block content %}{% endblock %} <!-- Вставка контента для каждой страницы через блок content -->
             </main>
         </div>
     </div>

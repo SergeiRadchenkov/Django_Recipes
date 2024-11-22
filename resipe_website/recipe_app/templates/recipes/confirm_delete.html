@@ -1,12 +1,19 @@
 <!-- recipe_app/templates/recipes/confirm_delete.html -->
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- Расширяет основной шаблон base.html -->
 
 {% block content %}
-<h2>Удаление рецепта</h2>
+<h2>Удаление рецепта</h2> <!-- Заголовок страницы -->
+
+<!-- Сообщение, спрашивающее пользователя о подтверждении удаления рецепта -->
 <p>Вы уверены, что хотите удалить рецепт "{{ recipe.title }}"?</p>
+<!-- Форма для подтверждения удаления рецепта -->
 <form method="post">
-    {% csrf_token %}
+    {% csrf_token %} <!-- Защита от CSRF-атак -->
+
+    <!-- Кнопка для подтверждения удаления -->
     <button type="submit" class="delete-button">Удалить</button>
+
+    <!-- Ссылка для отмены удаления и возврата на страницу профиля -->
     <a href="{% url 'profile' %}" class="submit-button cancel-button">Отмена</a>
 </form>
 {% endblock %}

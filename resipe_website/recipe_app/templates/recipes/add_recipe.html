@@ -1,46 +1,56 @@
 <!-- recipe_app/templates/recipes/add_recipe.html -->
-{% extends 'base.html' %}
-{% block title %}Добавить рецепт{% endblock %}
+{% extends 'base.html' %} <!-- Расширяет основной шаблон base.html -->
+{% block title %}Добавить рецепт{% endblock %} <!-- Устанавливает название страницы для браузера -->
 {% block content %}
-<h2 class="section-title">Добавьте новый рецепт</h2>
+<h2 class="section-title">Добавьте новый рецепт</h2> <!-- Заголовок страницы -->
+
+<!-- Форма для добавления рецепта -->
 <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+    {% csrf_token %} <!-- Защита от CSRF-атак -->
 
+    <!-- Раздел для ввода названия рецепта -->
     <div class="form-section">
-        <h3 class="form-title">Напишите название рецепта</h3>
-        {{ form.title }}
+        <h3 class="form-title">Напишите название рецепта</h3> <!-- Заголовок раздела -->
+        {{ form.title }} <!-- Поле для ввода названия рецепта -->
     </div>
 
+    <!-- Раздел для выбора категории рецепта -->
     <div class="form-section">
-        <h3 class="form-title">Выборите категорию</h3>
-        {{ form.categories }}
+        <h3 class="form-title">Выборите категорию</h3> <!-- Заголовок раздела -->
+        {{ form.categories }} <!-- Выпадающий список для выбора категории рецепта -->
     </div>
 
+    <!-- Раздел для ввода описания рецепта -->
     <div class="form-section">
-        <h3 class="form-title">Описание рецепта</h3>
-        {{ form.description }}
+        <h3 class="form-title">Описание рецепта</h3> <!-- Заголовок раздела -->
+        {{ form.description }} <!-- Поле для ввода описания рецепта -->
     </div>
 
+    <!-- Раздел для ввода ингредиентов -->
     <div class="form-section">
-        <h3 class="form-title">Ингредиенты</h3>
-        {{ form.ingredients }}
+        <h3 class="form-title">Ингредиенты</h3> <!-- Заголовок раздела -->
+        {{ form.ingredients }} <!-- Поле для ввода ингредиентов -->
     </div>
 
+    <!-- Раздел для ввода шагов приготовления -->
     <div class="form-section">
-        <h3 class="form-title">Шаги приготовления</h3>
-        {{ form.preparation_steps }}
+        <h3 class="form-title">Шаги приготовления</h3> <!-- Заголовок раздела -->
+        {{ form.preparation_steps }} <!-- Поле для ввода шагов приготовления -->
     </div>
 
+    <!-- Раздел для ввода времени приготовления -->
     <div class="form-section">
-        <h3 class="form-title">Время приготовления в минутах</h3>
-        {{ form.preparation_time }}
+        <h3 class="form-title">Время приготовления в минутах</h3> <!-- Заголовок раздела -->
+        {{ form.preparation_time }} <!-- Поле для ввода времени приготовления -->
     </div>
 
+    <!-- Раздел для загрузки изображения -->
     <div class="form-section">
-        <h3 class="form-title">Добавьте фото</h3>
-        {{ form.image }}
+        <h3 class="form-title">Добавьте фото</h3> <!-- Заголовок раздела -->
+        {{ form.image }} <!-- Поле для загрузки изображения -->
     </div>
 
+    <!-- Кнопка для отправки формы -->
     <button type="submit" class="submit-button">Сохранить рецепт</button>
 </form>
 {% endblock %}

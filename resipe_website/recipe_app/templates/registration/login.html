@@ -1,22 +1,46 @@
 <!-- recipe_app/templates/registration/login.html -->
-<!-- recipe_app/templates/registration/login.html -->
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- Расширяет основной шаблон base.html -->
 {% load form_tags %}  <!-- Загрузка пользовательских тегов -->
 
-{% block title %}Вход{% endblock %}
+{% block title %}Вход{% endblock %} <!-- Устанавливает название страницы как "Вход" -->
 
 {% block content %}
-<h2 class="section-title">Вход</h2>
+<h2 class="section-title">Вход</h2> <!-- Заголовок страницы "Вход" -->
+<!-- Форма для входа пользователя -->
 <form method="post" action="{% url 'login' %}" class="login-form">
-    {% csrf_token %}
+    {% csrf_token %} <!-- Добавление токена для защиты от CSRF атак -->
+
+    <!-- Проверка наличия глобальных ошибок формы (не связанных с конкретными полями) -->
+    {% if form.non_field_errors %}
+        <ul>
+            {% for error in form.non_field_errors %}
+                <li class="error-message">{{ error }}</li> <!-- Вывод ошибок валидации -->
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Поле ввода для имени пользователя -->
     <div class="form-section">
-        {{ form.username.label_tag }}
+        {{ form.username.label_tag }} <!-- Вывод метки для поля username -->
         {{ form.username|add_class:"form-input" }}  <!-- Использование пользовательского фильтра -->
+        <!-- Проверка ошибок для поля username -->
+        {% if form.username.errors %}
+            <div class="error-message">{{ form.username.errors.0 }}</div> <!-- Вывод первой ошибки для поля username -->
+        {% endif %}
     </div>
+
+    <!-- Поле ввода для пароля -->
     <div class="form-section">
-        {{ form.password.label_tag }}
+        {{ form.password.label_tag }} <!-- Вывод метки для поля password -->
         {{ form.password|add_class:"form-input" }}  <!-- Использование пользовательского фильтра -->
+
+        <!-- Проверка ошибок для поля password -->
+        {% if form.password.errors %}
+            <div class="error-message">{{ form.password.errors.0 }}</div> <!-- Вывод первой ошибки для поля password -->
+        {% endif %}
     </div>
-    <button type="submit" class="submit-button">Войти</button>
+
+    <!-- Кнопка отправки формы -->
+    <button type="submit" class="submit-button">Войти</button> <!-- Кнопка для отправки формы -->
 </form>
 {% endblock %}

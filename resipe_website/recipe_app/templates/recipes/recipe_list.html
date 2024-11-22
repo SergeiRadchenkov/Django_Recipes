@@ -1,26 +1,32 @@
 <!-- recipe_app/templates/recipes/recipe_list.html -->
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- Расширяет основной шаблон base.html -->
 
-{% block title %}Сайт ваших рецептов{% endblock %}
+{% block title %}Сайт ваших рецептов{% endblock %} <!-- Устанавливает название страницы -->
 
 {% block content %}
 <div class="recipes-section">
-    <h2 class="section-title">Свежие рецепты</h2>
+    <h2 class="section-title">Свежие рецепты</h2> <!-- Заголовок секции с рецептами -->
     <div class="recipe-cards">
+        <!-- Цикл для вывода всех рецептов -->
         {% for recipe in recipes %}
-            <div class="recipe-card">
+            <div class="recipe-card"> <!-- Карточка каждого рецепта -->
                 <div class="recipe-author">
-                    {{ recipe.author.username }}
+                    {{ recipe.author.username }} <!-- Имя автора рецепта -->
                 </div>
-                <h3>{{ recipe.title }}</h3>
+                <h3>{{ recipe.title }}</h3> <!-- Название рецепта -->
+
+                <!-- Ссылка на страницу с подробной информацией о рецепте -->
                 <a href="{% url 'recipe_detail' recipe.id %}">
-                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="recipe-image">
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="recipe-image"> <!-- Изображение рецепта -->
                 </a>
-                <p>{{ recipe.description }}</p>
-                <p>Время приготовления: {{ recipe.preparation_time }} мин.</p>
+                <p>{{ recipe.description }}</p> <!-- Краткое описание рецепта -->
+                <p>Время приготовления: {{ recipe.preparation_time }} мин.</p> <!-- Время приготовления рецепта -->
+
+                <!-- Ссылка для перехода на страницу с подробной информацией -->
                 <a href="{% url 'recipe_detail' recipe.id %}" class="recipe-link">Подробнее</a>
             </div>
         {% empty %}
+            <!-- Сообщение, если нет доступных рецептов -->
             <p>Пока нет доступных рецептов.</p>
         {% endfor %}
     </div>

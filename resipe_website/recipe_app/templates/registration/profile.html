@@ -1,38 +1,38 @@
 <!-- recipe_app/templates/registration/profile.html -->
-{% extends 'base.html' %}
+{% extends 'base.html' %} !-- Расширяет основной шаблон base.html, общие элементы интерфейса будут здесь -->
 
-{% block title %}Ваш профиль{% endblock %}
+{% block title %}Ваш профиль{% endblock %} <!-- Устанавливает название страницы как "Ваш профиль" -->
 
 {% block content %}
 <div class="content">
-    <h2 class="user-name">Ваше имя: {{ user.username }}</h2>
-    <h3 class="section-title">Ваши рецепты</h3>
+    <h2 class="user-name">Ваше имя: {{ user.username }}</h2> <!-- Отображает имя текущего пользователя -->
+    <h3 class="section-title">Ваши рецепты</h3> <!-- Заголовок секции с рецептами пользователя -->
 </div>
 <div class="recipes-section">
     <div class="recipe-cards">
-        {% if recipes %}
-            {% for recipe in recipes %}
+        {% if recipes %} <!-- Если у пользователя есть рецепты, то отображаем их -->
+            {% for recipe in recipes %} <!-- Перебор всех рецептов пользователя -->
                 <div class="recipe-card">
-                    <div class="recipe-author">{{ recipe.author.username }}</div>
-                    <h3>{{ recipe.title }}</h3>
+                    <div class="recipe-author">{{ recipe.author.username }}</div> <!-- Автор рецепта -->
+                    <h3>{{ recipe.title }}</h3> <!-- Название рецепта -->
                     <a href="{% url 'recipe_detail' recipe.id %}">
-                    <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="recipe-image">
+                    <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="recipe-image"> <!-- Изображение рецепта -->
                     </a>
-                    <p>{{ recipe.description }}</p>
-                    <p>Время приготовления: {{ recipe.preparation_time }} мин.</p>
-                    <a href="{% url 'recipe_detail' recipe.id %}" class="recipe-link submit-button">Подробнее</a>
+                    <p>{{ recipe.description }}</p> <!-- Краткое описание рецепта -->
+                    <p>Время приготовления: {{ recipe.preparation_time }} мин.</p> <!-- Время приготовления рецепта -->
+                    <a href="{% url 'recipe_detail' recipe.id %}" class="recipe-link submit-button">Подробнее</a> <!-- Ссылка на страницу рецепта с подробным описанием -->
                     <!-- Ссылка для редактирования рецепта -->
                     <a href="{% url 'edit_recipe' recipe.id %}" class="recipe-link submit-button">Редактировать</a>
 
                     <!-- Форма для удаления рецепта -->
                     <form action="{% url 'delete_recipe' recipe.id %}" method="get" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="delete-button">Удалить</button>
+                        {% csrf_token %} <!-- Токен для защиты от CSRF атак -->
+                        <button type="submit" class="delete-button">Удалить</button> <!-- Кнопка для удаления рецепта -->
                     </form>
                 </div>
             {% endfor %}
-        {% else %}
-            <p>У вас еще нет рецептов.</p>
+        {% else %} <!-- Если рецептов нет -->
+            <p>У вас еще нет рецептов.</p> <!-- Сообщение о том, что у пользователя нет рецептов -->
         {% endif %}
     </div>
 </div>

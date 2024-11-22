@@ -1,29 +1,64 @@
 <!-- recipe_app/templates/registration/register.html -->
-{% extends 'base.html' %}
-{% load form_tags %}
+{% extends 'base.html' %} <!-- Расширяет основной шаблон base.html, общие элементы интерфейса будут здесь -->
+{% load form_tags %} <!-- Загружает пользовательские теги, определённые в проекте -->
 
-{% block title %}Регистрация{% endblock %}
+{% block title %}Регистрация{% endblock %} <!-- Устанавливает название страницы как "Регистрация" -->
 
 {% block content %}
-<h2 class="section-title">Регистрация</h2>
+<h2 class="section-title">Регистрация</h2> <!-- Заголовок страницы "Регистрация" -->
+
+<!-- Форма для регистрации пользователя -->
 <form method="post" class="registration-form">
-    {% csrf_token %}
+    {% csrf_token %} <!-- Добавляет токен защиты от CSRF атак -->
+
+    <!-- Проверка наличия ошибок формы -->
+    {% if form.errors %}
+        <div class="error-summary">
+            <p>Пожалуйста, исправьте ошибки ниже:</p> <!-- Сообщение о наличии ошибок -->
+        </div>
+    {% endif %}
+
+    <!-- Поле ввода для имени пользователя -->
     <div class="form-section">
-        {{ form.username.label_tag }}
+        {{ form.username.label_tag }} <!-- Отображает метку для поля username -->
         {{ form.username|add_class:"form-input" }}  <!-- Поле ввода имени пользователя -->
+        <!-- Если есть ошибки, выводит их -->
+        {% if form.username.errors %}
+            <div class="error-message">{{ form.username.errors.0 }}</div>
+        {% endif %}
     </div>
+
+    <!-- Поле ввода для электронной почты -->
     <div class="form-section">
-        {{ form.email.label_tag }}
+        {{ form.email.label_tag }} <!-- Отображает метку для поля email -->
         {{ form.email|add_class:"form-input" }}  <!-- Поле ввода электронной почты -->
+        {% if form.email.errors %}
+            <!-- Если есть ошибки, выводит их -->
+            <div class="error-message">{{ form.email.errors.0 }}</div>
+        {% endif %}
     </div>
+
+    <!-- Поле ввода для пароля -->
     <div class="form-section">
-        {{ form.password1.label_tag }}
+        {{ form.password1.label_tag }} <!-- Отображает метку для поля password1 -->
         {{ form.password1|add_class:"form-input" }}  <!-- Поле ввода пароля -->
+        {% if form.password1.errors %}
+            <!-- Если есть ошибки, выводит их -->
+            <div class="error-message">{{ form.password1.errors.0 }}</div>
+        {% endif %}
     </div>
+
+    <!-- Поле ввода для подтверждения пароля -->
     <div class="form-section">
-        {{ form.password2.label_tag }}
+        {{ form.password2.label_tag }} <!-- Отображает метку для поля password2 -->
         {{ form.password2|add_class:"form-input" }}  <!-- Поле ввода подтверждения пароля -->
+        {% if form.password2.errors %}
+            <!-- Если есть ошибки, выводит их -->
+            <div class="error-message">{{ form.password2.errors.0 }}</div>
+        {% endif %}
     </div>
+
+    <!-- Кнопка для отправки формы -->
     <button type="submit" class="submit-button">Зарегистрироваться</button>
 </form>
 {% endblock %}

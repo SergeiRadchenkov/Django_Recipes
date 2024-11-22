@@ -22,12 +22,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    # Путь для страницы входа в систему (используется стандартное представление Django)
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
+    # Путь для страницы выхода из системы (используется стандартное представление Django)
     path('accounts/logout/', auth_views.LogoutView.as_view(), name='logout'),
+    # Включение URL-ресурсов приложения 'recipe_app' для аутентификации
     path('accounts/', include('recipe_app.urls')),
+    # Включение URL-ресурсов приложения 'recipe_app' для остальных страниц сайта
     path('', include('recipe_app.urls')),
+    # Путь для доступа к админ-панели Django
     path('admin/', admin.site.urls),
 ]
 
+# Включаем обработку статических файлов (например, изображений) в режиме DEBUG
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
